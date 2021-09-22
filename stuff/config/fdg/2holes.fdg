@@ -1,0 +1,40 @@
+#
+VERSION_1.0
+#
+ HOLE 0
+   X0     203
+   Y0     104
+   X1     209
+   Y1     110
+   X      206
+   Y      107
+   XSIZE 6
+   YSIZE 6
+   AREA   32
+ END
+ HOLE 1
+   X0     203
+   Y0     145
+   X1     209
+   Y1     148
+   X      206
+   Y      146,5
+   XSIZE 2
+   YSIZE 2
+   AREA   6
+ END
+ HOLE 2
+   X0    203
+   Y0    182
+   X1    209
+   Y1    188
+   X     206
+   Y     185
+   XSIZE 6
+   YSIZE 6
+   AREA  32
+ END
+# OTHER INFO
+DIST_CTR_TO_CTR_HOLE  128
+DIST_CTR_HOLE_TO_EDGE 010
+
