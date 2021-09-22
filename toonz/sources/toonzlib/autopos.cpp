@@ -1271,7 +1271,7 @@ bool get_image_rotation_and_center(const TRasterP &img, int strip_width,
     }
   }
 
-  ndot = find_dots(img, strip_width, pegs_side, dotarray, MAX_DOT, max_area);
+  ndot = find_dots(img, strip_width, pegs_side, dotarray, 2, max_area);
   if (Debug_flag) printf(">>>> %d dots found\n", ndot);
 
   i = 0;
@@ -1288,6 +1288,22 @@ bool get_image_rotation_and_center(const TRasterP &img, int strip_width,
   if (ndot <= 1) {
     return false;
   }
+
+_dotarray[2] = _dotarray[1];
+
+_dotarray[1].x = (_dotarray[2].x - _dotarray[0].x) * 0.5 + _dotarray[0].x;
+_dotarray[1].y = (_dotarray[2].y - _dotarray[0].y) * 0.5 + _dotarray[0].y;
+
+_dotarray[1].x1 = _dotarray[1].x - (_dotarray[0].lx * 0.5);
+_dotarray[1].x2 = _dotarray[1].x + (_dotarray[0].lx * 0.5);
+_dotarray[1].y1 = _dotarray[1].y - (_dotarray[0].ly * 0.5);
+_dotarray[1].y2 = _dotarray[1].y + (_dotarray[0].ly * 0.5);
+
+_dotarray[1].area = _dotarray[0].area;
+_dotarray[1].lx = _dotarray[0].lx;
+_dotarray[1].ly = _dotarray[0].ly;
+
+ndot++;
 
   int indexArray[3] = {0, 1, 2};
   found             = compare_dots(dotarray, ndot, ref, ref_dot, indexArray[0],
